@@ -12,11 +12,13 @@ def hello_flask():
 
 @app.route('/hot')
 def spider_hot():
-	# 1、传入URL
+	# 1、待传入URL
 	root_url = 'http://www.pythontab.com/'
+	# 2、实例化爬虫对象
 	spider = hellospider.SpiderMain()
-	# 2、返回数据
+	# 3、传入URL，接收返回数据
 	hot_datas = spider.Crawl(root_url)
+	# 4、将接收的数据转为JSON格式输出
 	return jsonify(hot_datas)
 
 if __name__ == '__main__':
