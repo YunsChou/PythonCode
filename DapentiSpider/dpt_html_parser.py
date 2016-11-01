@@ -10,14 +10,14 @@ class Parser(object):
 	def __init__(self):
 		self.downloader = dpt_html_downloader.Downloader()
 
-	def parse(self, root_url, html):
+	def parse(self, root_url, item_url, html):
 		if html is None:
 			return
 
 		soup = BeautifulSoup(html, 'html.parser')
-		self.parse_title(root_url, soup)
+		self.parse_title(root_url, item_url, soup)
 
-	def parse_title(self, root_url, soup):
+	def parse_title(self, root_url, item_url, soup):
 		links = soup.find('div', align = 'left').find('ul').findAll('li')
 		testNum = 0
 		for link in links:
@@ -28,7 +28,7 @@ class Parser(object):
 			content = self.parse_content(root_url, href)
 			print('href : %s, title : %s, newsid : %s, content : %s' %(href, title, newsid, content))
 			testNum = testNum + 1
-			if testNum > 3:
+			if testNum > 1:
 				break
 
 	def parse_newsid(self, href):
@@ -49,6 +49,7 @@ class Parser(object):
 			if len(content.string) > 0:
 				content_text += content.string
 		
+		return contents
 		return content_text
 
 
