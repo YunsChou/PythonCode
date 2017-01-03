@@ -22,7 +22,7 @@ class SpiderMain(object):
 				self.urlManager.add_new_url(parse_url)
 				time.sleep(2)
 				count += 1
-				if count > 3:
+				if count > 2:
 					break
 		except Exception as e:
 			print('e : %s' %e)

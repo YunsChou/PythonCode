@@ -1,14 +1,15 @@
 
 import pymongo
 
-con = pymongo.MongoClient()
-db = con['mongon-test1-db']
-col = db['girls']
+
 
 class Outputer(object):
 	
 	def __init__(self):
 		self.datas = []
+		con = pymongo.MongoClient()
+		db = con['TestDB']
+		self.col = db['DbMeinv']
 		
 
 	def collect_data(self, data):
@@ -22,9 +23,9 @@ class Outputer(object):
 		# self.col.insert(self.datas)
 		for data in self.datas:
 			is_exist = self.col.find_one({'imgsrc':data['imgsrc']})
-			print(is_exist)
+			# print(is_exist)
 			if is_exist == None:
-				col.insert(data)
+				self.col.insert(data)
 		# 	print(data)
 			# print('link : %s, title : %s, imgsrc : %s' %(data['link'], data['title'], data['imgsrc']))
 			# girl = {"title":data['title'],"link":data['link'],"imgsrc":data['imgsrc']}
