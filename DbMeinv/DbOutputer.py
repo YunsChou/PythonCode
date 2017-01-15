@@ -8,8 +8,8 @@ class Outputer(object):
 	def __init__(self):
 		self.datas = []
 		con = pymongo.MongoClient()
-		db = con['TestDB']
-		self.col = db['DbMeinv']
+		db = con['picture']
+		self.col = db['meinv']
 		
 
 	def collect_data(self, data):

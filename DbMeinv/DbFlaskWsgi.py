@@ -14,14 +14,14 @@ def function():
 @app.route('/meinv', methods = ['GET'])
 def findMeinv():
 	con = pymongo.MongoClient()
-	db = con['mongon-test1-db']
-	col = db['girls']
+	db = con['picture']
+	col = db['meinv']
 	items = []
 	res = col.find().skip(0).limit(10)
 	for item in res:
+		print(dict(item))
 		items.append({'title':item['title'],'imgsrc':item['imgsrc'], 'link':item['link']})
 	return jsonify(items)
-
 
 if __name__ == '__main__':
 	app.run()
