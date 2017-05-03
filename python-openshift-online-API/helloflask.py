@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask import jsonify
+from flask import render_template
 import hellospider
 
 app = Flask(__name__)
@@ -20,6 +21,10 @@ def spider_hot():
 	hot_datas = spider.Crawl(root_url)
 	# 4、将接收的数据转为JSON格式输出
 	return jsonify(hot_datas)
+
+@app.route('/temp')
+def temp_flask():
+	return render_template('home.html')
 
 if __name__ == '__main__':
 	app.run()
