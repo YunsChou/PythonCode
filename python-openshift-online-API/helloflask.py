@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_flask():
-	return 'hello_flask!'
+	return 'hello flask!'
 
 @app.route('/hot')
 def spider_hot():
