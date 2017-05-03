@@ -22,7 +22,7 @@ def spider_hot():
 	# 4、将接收的数据转为JSON格式输出
 	return jsonify(hot_datas)
 
-@app.route('/temp')
+@app.route('/temp', methods = ['GET', 'POST'])
 def temp_flask():
 	return render_template('home.html')
 
